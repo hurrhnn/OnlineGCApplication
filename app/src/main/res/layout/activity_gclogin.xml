@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ebs_login_bg_wave"
-    tools:context=".OCLoginActivity">
+    android:background="@drawable/gc_login_bg"
+    tools:context=".GCLoginActivity">
 
 
     <ImageButton
@@ -14,12 +14,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:background="?attr/actionModeCloseDrawable"
-        android:backgroundTint="#E9E9E9"
+        android:backgroundTint="#f8f8fa"
         app:layout_constraintBottom_toBottomOf="@+id/title_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/title_label"
         app:srcCompat="?attr/actionModeCloseDrawable"
-        app:tint="#191919" />
+        app:tint="#f8f8fa" />
 
     <TextView
         android:id="@+id/title_label"
@@ -30,14 +30,14 @@
         android:gravity="center_horizontal"
         android:letterSpacing="-0.02"
         android:lineSpacingExtra="9.5sp"
-        android:textColor="#191919"
+        android:textColor="#f8f8fa"
         android:textSize="20.5sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.33"
         app:layout_constraintStart_toEndOf="@+id/back_btn"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="온라인 클래스 로그인 하기" />
+        android:text="구글 클래스룸 로그인 하기" />
 
     <ImageView
         android:id="@+id/school_image"
@@ -73,7 +73,7 @@
 
     <EditText
         android:id="@+id/pw_textfield"
-        android:layout_width="327dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/bg_textfield"
@@ -97,11 +97,11 @@
 
     <Button
         android:id="@+id/signin_btn"
-        android:layout_width="327dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/bg_btn"
-        android:backgroundTint="#2580eb"
+        android:backgroundTint="#36CE78"
         android:fontFamily="@font/noto_sans_cj_kkr"
         android:letterSpacing="-0.03"
         android:lineSpacingExtra="8sp"
@@ -115,6 +115,17 @@
         app:layout_constraintStart_toStartOf="@+id/pw_textfield"
         app:layout_constraintTop_toBottomOf="@+id/pw_textfield"
         app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/google_signin_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/signin_btn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/signin_btn"
+        app:layout_constraintTop_toBottomOf="@+id/signin_btn"
+        app:layout_constraintVertical_bias="0.785" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

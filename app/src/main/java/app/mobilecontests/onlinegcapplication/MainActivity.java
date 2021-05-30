@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import app.mobilecontests.onlinegcapplication.classroom.GCServiceHelper;
@@ -42,6 +46,22 @@ public class MainActivity extends AppCompatActivity {
         SQLiteHelper sqLiteHelper = new SQLiteHelper(this, "ogc.db", null, 1);
         database = sqLiteHelper.getWritableDatabase();
         sqLiteHelper.onCreate(database);
+
+        Animation topAnim = AnimationUtils.loadAnimation(this, R.anim.school_animation);
+
+        Animation bottomAnim = AnimationUtils.loadAnimation(this, R.anim.splash_school_animation);
+        bottomAnim.setRepeatCount(Animation.INFINITE);
+        bottomAnim.setRepeatMode(Animation.RESTART);
+
+        ImageView school = findViewById(R.id.main_school_image);
+        school.setAnimation(topAnim);
+//        school.setAnimation(bottomAnim);
+
+        Button startBtn = findViewById(R.id.startBtn);
+        startBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, OCLoginActivity.class);
+            startActivity(intent);
+        });
 
         findViewById(R.id.sign_in_button).setOnClickListener(v -> {
             if (v.getId() == R.id.sign_in_button) {

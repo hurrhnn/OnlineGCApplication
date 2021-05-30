@@ -3,6 +3,8 @@ package app.mobilecontests.onlinegcapplication;
 import android.app.Activity;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 

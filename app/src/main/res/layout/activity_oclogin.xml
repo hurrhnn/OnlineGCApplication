@@ -4,80 +4,117 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@drawable/ebs_login_bg_wave"
+    tools:context=".OCLoginActivity">
 
-    <TextView
+
+    <ImageButton
+        android:id="@+id/back_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Withyou"
-        android:textColor="@color/pink01"
-        android:textSize="52dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="25dp"
+        android:background="?attr/actionModeCloseDrawable"
+        android:backgroundTint="#E9E9E9"
+        app:layout_constraintBottom_toBottomOf="@+id/title_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/title_label"
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        app:tint="#191919" />
+
+    <TextView
+        android:id="@+id/title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/noto_sans_cj_kkr"
+        android:gravity="center_horizontal"
+        android:letterSpacing="-0.02"
+        android:lineSpacingExtra="9.5sp"
+        android:textColor="#191919"
+        android:textSize="20.5sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.33"
+        app:layout_constraintStart_toEndOf="@+id/back_btn"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/signintxt"
-        />
+        android:text="온라인 클래스 로그인 하기" />
 
-    <TextView
-        android:id="@+id/signintxt"
+    <ImageView
+        android:id="@+id/school_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign in"
-        android:textSize="24sp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@id/textProductName"
-        app:layout_constraintLeft_toLeftOf="@id/textProductName"/>
+        android:layout_marginTop="76dp"
+        app:layout_constraintEnd_toEndOf="@+id/title_label"
+        app:layout_constraintHorizontal_bias="0.607"
+        app:layout_constraintStart_toStartOf="@+id/title_label"
+        app:layout_constraintTop_toBottomOf="@+id/title_label"
+        app:srcCompat="@drawable/mini_school" />
 
+    <EditText
+        android:id="@+id/id_textfield"
+        android:layout_width="327dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bg_textfield"
+        android:ems="10"
+        android:fontFamily="@font/noto_sans_cj_kkr"
+        android:hint="아이디"
+        android:inputType="textPersonName"
+        android:letterSpacing="-0.03"
+        android:lineSpacingExtra="8sp"
+        android:paddingLeft="15dp"
+        android:textColor="#191919"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/school_image"
+        tools:visibility="visible" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textProductName"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <EditText
+        android:id="@+id/pw_textfield"
+        android:layout_width="327dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_textfield"
+        android:ems="10"
+        android:fontFamily="@font/noto_sans_cj_kkr"
+        android:hint="비밀번호"
+        android:inputType="textPersonName"
+        android:letterSpacing="-0.03"
+        android:lineSpacingExtra="8sp"
+        android:paddingLeft="15dp"
+        android:password="true"
+        android:textColor="#191919"
+
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/id_textfield"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/id_textfield"
+        app:layout_constraintTop_toBottomOf="@+id/id_textfield"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/signin_btn"
+        android:layout_width="327dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/bg_btn"
+        android:backgroundTint="#2580eb"
+        android:fontFamily="@font/noto_sans_cj_kkr"
+        android:letterSpacing="-0.03"
+        android:lineSpacingExtra="8sp"
+        android:text="계정 연동하기"
+        android:textColor="#f8f8fa"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4">
+        app:layout_constraintEnd_toEndOf="@+id/pw_textfield"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/pw_textfield"
+        app:layout_constraintTop_toBottomOf="@+id/pw_textfield"
+        app:layout_constraintVertical_bias="0.0" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edit_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="ID"
-            android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TextInputChangePassword"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textProductName">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edit_pw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="PW"
-            android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/signinbtn"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="SIGN IN"
-        android:textColor="@color/pink02"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextInputChangePassword">
-
-    </com.google.android.material.button.MaterialButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

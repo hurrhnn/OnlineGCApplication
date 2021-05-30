@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gc_login_bg"
+    tools:context=".GCLoginActivity">
+
+
+    <ImageButton
+        android:id="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:background="?attr/actionModeCloseDrawable"
+        android:backgroundTint="#f8f8fa"
+        app:layout_constraintBottom_toBottomOf="@+id/title_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/title_label"
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        app:tint="#f8f8fa" />
+
+    <TextView
+        android:id="@+id/title_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/noto_sans_cj_kkr"
+        android:gravity="center_horizontal"
+        android:letterSpacing="-0.02"
+        android:lineSpacingExtra="9.5sp"
+        android:textColor="#f8f8fa"
+        android:textSize="20.5sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.33"
+        app:layout_constraintStart_toEndOf="@+id/back_btn"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="구글 클래스룸 로그인 하기" />
+
+    <ImageView
+        android:id="@+id/school_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        app:layout_constraintEnd_toEndOf="@+id/title_label"
+        app:layout_constraintHorizontal_bias="0.607"
+        app:layout_constraintStart_toStartOf="@+id/title_label"
+        app:layout_constraintTop_toBottomOf="@+id/title_label"
+        app:srcCompat="@drawable/mini_school" />
+
+    <EditText
+        android:id="@+id/id_textfield"
+        android:layout_width="327dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bg_textfield"
+        android:ems="10"
+        android:fontFamily="@font/noto_sans_cj_kkr"
+        android:hint="아이디"
+        android:inputType="textPersonName"
+        android:letterSpacing="-0.03"
+        android:lineSpacingExtra="8sp"
+        android:paddingLeft="15dp"
+        android:textColor="#191919"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/school_image"
+        tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/pw_textfield"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_textfield"
+        android:ems="10"
+        android:fontFamily="@font/noto_sans_cj_kkr"
+        android:hint="비밀번호"
+        android:inputType="textPersonName"
+        android:letterSpacing="-0.03"
+        android:lineSpacingExtra="8sp"
+        android:paddingLeft="15dp"
+        android:password="true"
+        android:textColor="#191919"
+
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/id_textfield"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/id_textfield"
+        app:layout_constraintTop_toBottomOf="@+id/id_textfield"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/signin_btn"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/bg_btn"
+        android:backgroundTint="#36CE78"
+        android:fontFamily="@font/noto_sans_cj_kkr"
+        android:letterSpacing="-0.03"
+        android:lineSpacingExtra="8sp"
+        android:text="계정 연동하기"
+        android:textColor="#f8f8fa"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/pw_textfield"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/pw_textfield"
+        app:layout_constraintTop_toBottomOf="@+id/pw_textfield"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/google_signin_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/signin_btn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/signin_btn"
+        app:layout_constraintTop_toBottomOf="@+id/signin_btn"
+        app:layout_constraintVertical_bias="0.785" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

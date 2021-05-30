@@ -1,4 +1,4 @@
-package app.mobilecontests.onlinegcapplication;
+package app.mobilecontests.onlinegcapplication.classroom;
 
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
@@ -13,14 +13,14 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class ClassroomServiceHelper {
+public class GCServiceHelper {
 
     private final Executor executor = Executors.newFixedThreadPool(1024);
     private final Classroom classroomService;
     String pageToken = null;
 
-    public ClassroomServiceHelper(Classroom ClassroomService) {
-        classroomService = ClassroomService;
+    public GCServiceHelper(Classroom googleClassroomService) {
+        classroomService = googleClassroomService;
     }
 
     public Task<List<Course>> listCourses() {

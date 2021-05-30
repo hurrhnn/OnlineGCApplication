@@ -1,4 +1,4 @@
-package app.mobilecontests.onlinegcapplication;
+package app.mobilecontests.onlinegcapplication.ebsoc;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,10 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import app.mobilecontests.onlinegcapplication.ebsoc.HTTPRequestUtils;
-import app.mobilecontests.onlinegcapplication.ebsoc.OCInfo;
-import app.mobilecontests.onlinegcapplication.ebsoc.OCLearning;
-import app.mobilecontests.onlinegcapplication.ebsoc.OCMember;
+import app.mobilecontests.onlinegcapplication.R;
+import app.mobilecontests.onlinegcapplication.classroom.GCLoginActivity;
 
 public class OCLoginActivity extends AppCompatActivity {
 
@@ -63,10 +61,7 @@ public class OCLoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        backBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(OCLoginActivity.this, MainActivity.class);
-            startActivity(intent);
-        });
+        backBtn.setOnClickListener(v -> finish());
     }
 
     private void NotConnected_showAlert() //네트워크 연결 오류 시 어플리케이션 종료

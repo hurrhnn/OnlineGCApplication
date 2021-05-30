@@ -1,4 +1,4 @@
-package app.mobilecontests.onlinegcapplication;
+package app.mobilecontests.onlinegcapplication.classroom;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import app.mobilecontests.onlinegcapplication.R;
 import app.mobilecontests.onlinegcapplication.sqlite.SQLiteHelper;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;

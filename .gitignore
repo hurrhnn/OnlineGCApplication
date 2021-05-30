@@ -39,6 +39,7 @@ captures/
 
 # IntelliJ
 *.iml
+.idea/
 .idea/workspace.xml
 .idea/tasks.xml
 .idea/gradle.xml
@@ -90,10 +91,8 @@ lint/tmp/
 
 # ---> Java
 # Compiled class file
-*.class
 
 # Log file
-*.log
 
 # BlueJ files
 *.ctxt

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import app.mobilecontests.onlinegcapplication.ebsoc.OCLoginActivity;
+import app.mobilecontests.onlinegcapplication.schedule.Schedule;
 import app.mobilecontests.onlinegcapplication.sqlite.SQLiteHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button startBtn = findViewById(R.id.startBtn);
         startBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, OCLoginActivity.class);
+//            Intent intent = new Intent(MainActivity.this, OCLoginActivity.class); //원래 코드
+            Intent intent = new Intent(MainActivity.this, Schedule.class);
             startActivity(intent);
         });
     }

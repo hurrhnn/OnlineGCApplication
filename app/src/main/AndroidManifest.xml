@@ -15,9 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".GCLoginActivity" />
-        <activity android:name=".OCLoginActivity" />
-        <activity android:name=".ResultActivity" />
+        <activity android:name=".classroom.GCLoginActivity" />
+        <activity android:name=".ebsoc.OCLoginActivity" />
+        <activity android:name=".classroom.ResultActivity" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashActivity">

@@ -78,7 +78,7 @@ public class SchoolSchedule extends SchoolInfo{
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return citynum;
+            return null;
         }
 
     }

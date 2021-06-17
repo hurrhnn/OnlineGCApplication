@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 
-public class SchoolInfo extends AsyncTask<String, Void, String[]> {
+public class SchoolInfo extends AsyncTask<String, Void, Void> {
 
     Scanner sc = new Scanner(System.in);
     String SCHUL_NM = "선린인터넷고등학교"; //추후에 EditText로 변환
@@ -28,7 +28,7 @@ public class SchoolInfo extends AsyncTask<String, Void, String[]> {
     JSONArray rowArray = null;
     JSONObject jsonElement = null;
     @Override
-    protected String[] doInBackground(String... strings) {
+    protected Void doInBackground(String... strings) {
         String[] scinfo = new String[0];
         try {
 
@@ -43,11 +43,9 @@ public class SchoolInfo extends AsyncTask<String, Void, String[]> {
             jsonElement = (JSONObject) rowArray.get(1);
             citynum = ((String) jsonElement.get("ATPT_OFCDC_SC_CODE"));
             schoolnum = ((String) jsonElement.get("SD_SCHUL_CODE"));
-            scinfo[0] = citynum;
-            scinfo[1] = schoolnum;
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
-        return scinfo;
+        return null;
     }
 }

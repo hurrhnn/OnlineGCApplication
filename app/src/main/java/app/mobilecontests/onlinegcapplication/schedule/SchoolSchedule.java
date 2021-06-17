@@ -37,12 +37,16 @@ public class SchoolSchedule extends SchoolInfo{
     String TI_TO_YMD =sdf.format(date);
     String url = "https://open.neis.go.kr/hub/hisTimetable?KEY="+KEY+"&Type=json&pIndex=" + pIndex + "&pSize=" + pSize + "&ATPT_OFCDC_SC_CODE=" + ATPT_OFCDC_SC_CODE + "&SD_SCHUL_CODE=" + SD_SCHUL_CODE + "&AY=" + AY + "&GRADE=" + GRADE + "&CLASS_NM=" + CLASS_NM+"&TI_FROM_YMD="+TI_FROM_YMD+"&TI_TO_YMD="+TI_TO_YMD;
     Document doc = null;
+    int num = 1;
 
 
     public class getData extends AsyncTask<String,Void,String>{
         @Override
         protected String doInBackground(String... strings) {
             try {
+               if(num==1){
+
+               }
                 doc = Jsoup.connect(url).get(); //html코드까지
                 String Data = doc.text(); //text만
                 JSONObject jsonObject ;

@@ -17,8 +17,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".SelfcheckActivity" />
-        <activity android:name=".schedule.Schedule" />
+        <activity android:name=".SelfCheckActivity" />
+        <activity android:name=".schedule.ScheduleActivity" />
         <activity android:name=".classroom.GCLoginActivity" />
         <activity android:name=".ebsoc.OCLoginActivity" />
         <activity android:name=".classroom.ResultActivity" />

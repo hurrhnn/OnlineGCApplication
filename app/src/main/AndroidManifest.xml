@@ -15,12 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DashboardActivity"></activity>
         <activity android:name=".classroom.GCLoginActivity" />
         <activity android:name=".ebsoc.OCLoginActivity" />
         <activity android:name=".classroom.ResultActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".SplashActivity">
+        <activity
+            android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

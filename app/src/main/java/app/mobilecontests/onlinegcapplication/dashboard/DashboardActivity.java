@@ -1,40 +1,31 @@
-package app.mobilecontests.onlinegcapplication;
+package app.mobilecontests.onlinegcapplication.dashboard;
+
+import android.graphics.Color;
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.Color;
-import android.os.Bundle;
-
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.Description;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import app.mobilecontests.onlinegcapplication.R;
 
 public class DashboardActivity extends AppCompatActivity {
-
-    private ArrayList<DashboardProperty> mArrayList;
-    private DashboardAdapter mAdapter;
-    private int count = -1;
-
-    private LineChart chart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        chart = findViewById(R.id.chart);
+        LineChart chart = findViewById(R.id.chart);
 
         ArrayList<Entry> values = new ArrayList<>();
 
@@ -61,14 +52,14 @@ public class DashboardActivity extends AppCompatActivity {
         chart.setData(data);
 
 
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.class_list);
+        RecyclerView mRecyclerView = findViewById(R.id.class_list);
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
 
-        mArrayList = new ArrayList<>();
+        ArrayList<DashboardProperty> mArrayList = new ArrayList<>();
 
-        mAdapter = new DashboardAdapter(mArrayList);
+        DashboardAdapter mAdapter = new DashboardAdapter(mArrayList);
         mRecyclerView.setAdapter(mAdapter);
 
 

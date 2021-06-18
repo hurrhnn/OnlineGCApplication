@@ -1,4 +1,4 @@
-package app.mobilecontests.onlinegcapplication;
+package app.mobilecontests.onlinegcapplication.dashboard;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +13,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
+import app.mobilecontests.onlinegcapplication.R;
+
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.DashboardViewHolder> {
 
-    private ArrayList<DashboardProperty> mList;
+    private final ArrayList<DashboardProperty> mList;
 
-    public class DashboardViewHolder extends RecyclerView.ViewHolder {
+    public static class DashboardViewHolder extends RecyclerView.ViewHolder {
         protected TextView number;
         protected TextView startDate;
         protected TextView endDate;
@@ -28,13 +30,13 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
 
         public DashboardViewHolder(View view) {
             super(view);
-            this.number = (TextView) view.findViewById(R.id.class_number);
-            this.startDate = (TextView) view.findViewById(R.id.class_startdate);
-            this.endDate = (TextView) view.findViewById(R.id.class_enddate);
-            this.title = (TextView) view.findViewById(R.id.class_title);
-            this.subject = (TextView) view.findViewById(R.id.class_subject);
-            this.progressBar = (ProgressBar) view.findViewById(R.id.progress_bar);
-            this.progressPercent = (TextView) view.findViewById(R.id.progress_bar_percent);
+            this.number = view.findViewById(R.id.class_number);
+            this.startDate = view.findViewById(R.id.class_startdate);
+            this.endDate = view.findViewById(R.id.class_enddate);
+            this.title = view.findViewById(R.id.class_title);
+            this.subject = view.findViewById(R.id.class_subject);
+            this.progressBar = view.findViewById(R.id.progress_bar);
+            this.progressPercent = view.findViewById(R.id.progress_bar_percent);
         }
 
     }
@@ -42,14 +44,13 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
         this.mList = list;
     }
 
+    @NotNull
     @Override
     public DashboardViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.dashboard_item_container, viewGroup, false);
 
-        DashboardViewHolder viewHolder = new DashboardViewHolder(view);
-
-        return viewHolder;
+        return new DashboardViewHolder(view);
     }
 
     @Override

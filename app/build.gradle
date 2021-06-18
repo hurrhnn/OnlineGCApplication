@@ -52,6 +52,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.0.1' //파이어베이스 인증
     implementation 'com.firebaseui:firebase-ui-auth:7.1.1' //파이어베이스 UI
 
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0' // 그래프
+
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
     implementation 'com.google.http-client:google-http-client-gson:1.26.0'
     implementation group: 'com.google.apis', name: 'google-api-services-classroom', version: 'v1-rev397-1.25.0'

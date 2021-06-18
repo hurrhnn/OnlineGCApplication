@@ -1,4 +1,4 @@
-package app.mobilecontests.onlinegcapplication;
+package app.mobilecontests.onlinegcapplication.dashboard;
 
 public class DashboardProperty {
 

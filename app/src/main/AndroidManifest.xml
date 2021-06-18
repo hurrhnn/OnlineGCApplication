@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="false"
@@ -17,9 +16,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
+
         <activity android:name=".SelfCheckActivity" />
         <activity android:name=".schedule.ScheduleActivity" />
-        <activity android:name=".classroom.GCLoginActivity" />
+        <activity android:name=".classroom.GCLoginActivity"/>
         <activity android:name=".ebsoc.OCLoginActivity" />
         <activity android:name=".classroom.ResultActivity" />
         <activity

@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
-import app.mobilecontests.onlinegcapplication.schedule.ScheduleActivity;
+import app.mobilecontests.onlinegcapplication.ebsoc.OCLoginActivity;
 import app.mobilecontests.onlinegcapplication.sqlite.SQLiteHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button startBtn = findViewById(R.id.startBtn);
         startBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ScheduleActivity.class);
+            Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
             startActivity(intent);
         });
     }

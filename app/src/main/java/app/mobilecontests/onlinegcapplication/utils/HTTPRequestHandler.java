@@ -1,4 +1,4 @@
-package app.mobilecontests.onlinegcapplication.ebsoc;
+package app.mobilecontests.onlinegcapplication.utils;
 
 import org.jsoup.Connection;
 import org.jsoup.UncheckedIOException;

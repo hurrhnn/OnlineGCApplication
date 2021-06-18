@@ -179,7 +179,6 @@ public class GCLoginActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "An error occurred while loading the classroom.", Toast.LENGTH_LONG).show();
         }).addOnCompleteListener(task -> {
             progressDialog.dismiss();
-
             Intent intent = new Intent(this, ResultActivity.class);
             startActivity(intent);
         });

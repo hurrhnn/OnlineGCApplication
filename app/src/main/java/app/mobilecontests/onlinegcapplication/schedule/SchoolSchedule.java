@@ -1,85 +1,78 @@
 package app.mobilecontests.onlinegcapplication.schedule;
 
-import android.os.AsyncTask;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
-// implements AdapterView.OnItemClickListener
 
-public class SchoolSchedule extends SchoolInfo{
-    String ATPT_OFCDC_SC_CODE = citynum; //교육청코드
-    String SD_SCHUL_CODE= schoolnum; //학교코드
-    //String AY = "";
-    //String SEM = "1"; //학기
-    String GRADE = "2"; //학년
-    String CLASS_NM = "2"; //반
-    //	https://open.neis.go.kr/hub/hisTimetable?Type=json&pIndex=1&pSize=100&ATPT_OFCDC_SC_CODE=T10&SD_SCHUL_CODE=7003713
-    String pSize = "100";
-    String pIndex = "1";
-    String KEY = "e3dffc501f6b42c88900e6ac3139ca60";
-    //	https://open.neis.go.kr/hub/hisTimetable?ATPT_OFCDC_SC_CODE=T10&SD_SCHUL_CODE=7003713&TI_FROM_YMD=20190401&TI_TO_YMD=20190405
-//    String[][] ITRT_CNTNT=  new String[7][7];//과목명
-    Date date = new Date();
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd", Locale.KOREA);
-    SimpleDateFormat yearset = new SimpleDateFormat("yyyy",Locale.KOREA);
-    String AY = yearset.format(date);
-    String today = sdf.format(date);
-    String TI_FROM_YMD =sdf.format(date);
-    String TI_TO_YMD =sdf.format(date);
-    String url = "https://open.neis.go.kr/hub/hisTimetable?KEY="+KEY+"&Type=json&pIndex=" + pIndex + "&pSize=" + pSize + "&ATPT_OFCDC_SC_CODE=" + ATPT_OFCDC_SC_CODE + "&SD_SCHUL_CODE=" + SD_SCHUL_CODE + "&AY=" + AY + "&GRADE=" + GRADE + "&CLASS_NM=" + CLASS_NM+"&TI_FROM_YMD="+TI_FROM_YMD+"&TI_TO_YMD="+TI_TO_YMD;
-    Document doc = null;
-    int num = 1;
+import app.mobilecontests.onlinegcapplication.sqlite.SQLiteHelper;
+import app.mobilecontests.onlinegcapplication.utils.HTTPRequestUtils;
 
+public class SchoolSchedule extends Thread {
 
-    public class getData extends AsyncTask<String,Void,String>{
-        @Override
-        protected String doInBackground(String... strings) {
-            try {
-               if(num==1){
+    final String schoolNm;
+    final Context context;
+    public SchoolSchedule(String schoolNm, Context context) {
+        this.schoolNm = schoolNm;
+        this.context = context;
+    }
 
-               }
-                doc = Jsoup.connect(url).get(); //html코드까지
-                String Data = doc.text(); //text만
-                JSONObject jsonObject ;
+    public void run() {
+        try {
+            SQLiteHelper sqLiteHelper = new SQLiteHelper(context, "ogc.db", null, 1);
+            SQLiteDatabase database = sqLiteHelper.getWritableDatabase();
 
+            JSONObject responseData = (JSONObject) new JSONObject(new HTTPRequestUtils().GET(SchoolInfo.BASE_URL.getValue() + "schoolInfo?KEY=" + SchoolInfo.AUTH_KEY.getValue() + "&TYPE=json&SCHUL_NM=" + schoolNm, new HashMap<>(), (String[]) null).body()).getJSONArray("schoolInfo").getJSONObject(1).getJSONArray("row").get(0);
+            String cityNum = ((String) responseData.get("ATPT_OFCDC_SC_CODE"));
+            String schoolNum = ((String) responseData.get("SD_SCHUL_CODE"));
 
-                try {
-                    jsonObject = new JSONObject(Data);
-                    JSONArray jsonArray = jsonObject.getJSONArray("hisTimetable");
-                    JSONObject tmpObject = jsonArray.getJSONObject(1);
-                    JSONArray rowArray = tmpObject.getJSONArray("row");
-                    ArrayList<String> tmp = new ArrayList<>();
+            String GRADE = "2"; //학년
+            String CLASS_NM = "2"; //반
+            //	https://open.neis.go.kr/hub/hisTimetable?Type=json&pIndex=1&pSize=100&ATPT_OFCDC_SC_CODE=T10&SD_SCHUL_CODE=7003713
+            String pSize = "100";
+            String pIndex = "1";
+            //	https://open.neis.go.kr/hub/hisTimetable?ATPT_OFCDC_SC_CODE=T10&SD_SCHUL_CODE=7003713&TI_FROM_YMD=20190401&TI_TO_YMD=20190405
 
+            String AY = new SimpleDateFormat("yyyy", Locale.KOREA).format(new Date());
 
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd", Locale.KOREA);
+            String TI_FROM_YMD = simpleDateFormat.format(new Date());
+            String TI_TO_YMD = simpleDateFormat.format(new Date());
 
-                    for(int i = 0; i<rowArray.length(); i++){
-                        JSONObject jsonElement = (JSONObject) rowArray.get(i);
-                        tmp.add((String) jsonElement.get("ITRT_CNTNT"));
-                        }
-                    System.out.println(today);
-                    for(int j = 0; j< tmp.size(); j++){ //0~7까지 해야함 왠지는 모르겠음
-                        System.out.println(tmp.get(j));
-                    }
+            responseData = new JSONObject(new HTTPRequestUtils().GET(SchoolInfo.BASE_URL.getValue() + "hisTimetable?KEY=" + SchoolInfo.AUTH_KEY.getValue() + "&Type=json&pIndex=" + pIndex + "&pSize=" + pSize + "&ATPT_OFCDC_SC_CODE=" + cityNum + "&SD_SCHUL_CODE=" + schoolNum + "&AY=" + AY + "&GRADE=" + GRADE + "&CLASS_NM=" + CLASS_NM + "&TI_FROM_YMD=" + TI_FROM_YMD + "&TI_TO_YMD=" + TI_TO_YMD, new HashMap<>(), (String[]) null).body());
+            JSONArray jsonArray = responseData.getJSONArray("hisTimetable").getJSONObject(1).getJSONArray("row");
+            System.out.println(jsonArray.toString(4));
 
+            boolean isTimeTableExist = false;
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            Gson gson = new Gson();
+            Cursor cursor = database.query("school_timetable", new String[]{"date", "timetable"}, null, null, null, null, null);
+            while(cursor.moveToNext()) {
+                String date = cursor.getString(0);
+                if(date.equals(simpleDateFormat.format(new Date()))) {
+                    isTimeTableExist = true;
+                    break;
                 }
-
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-            return null;
-        }
+            cursor.close();
 
+            if (!isTimeTableExist) {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("date", simpleDateFormat.format(new Date()));
+                contentValues.put("timetable", gson.toJson(jsonArray).getBytes());
+
+                database.insert("school_timetable", null, contentValues);
+            }
+        } catch (Exception e) { e.printStackTrace(); }
     }
 }

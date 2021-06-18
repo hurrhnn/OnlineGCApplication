@@ -9,10 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
-import app.mobilecontests.onlinegcapplication.ebsoc.OCLoginActivity;
-import app.mobilecontests.onlinegcapplication.schedule.Schedule;
+import app.mobilecontests.onlinegcapplication.schedule.ScheduleActivity;
 import app.mobilecontests.onlinegcapplication.sqlite.SQLiteHelper;
-//import app.mobilecontests.onlinegcapplication.notification.notification;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,14 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button startBtn = findViewById(R.id.startBtn);
         startBtn.setOnClickListener(v -> {
-//            Intent intent = new Intent(MainActivity.this, OCLoginActivity.class); //원래 코드
-            Intent intent = new Intent(MainActivity.this, SelfcheckActivity.class);
+            Intent intent = new Intent(MainActivity.this, ScheduleActivity.class);
             startActivity(intent);
-
         });
-
-//
-//        Intent notificationintent = new Intent(MainActivity.this,notification.class);
-//        startService(notificationintent);
     }
 }

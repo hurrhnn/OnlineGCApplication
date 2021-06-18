@@ -10,6 +10,8 @@ import java.net.SocketTimeoutException;
 import java.util.HashMap;
 import java.util.Map;
 
+import app.mobilecontests.onlinegcapplication.utils.HTTPRequestUtils;
+
 public class OCMember {
 
     public Map<String, String> loginCookie = new HashMap<>();
@@ -40,6 +42,7 @@ public class OCMember {
         loginCookie.put("schoolInfoYn", "Y");
     }
 
+    @NotNull
     @Override
     public String toString() {
         return raw;
@@ -73,7 +76,7 @@ public class OCMember {
         return memberEmail;
     }
 
-    public OCSchool getOcMemberSchool() {
+    public OCSchool getOCSchool() {
         return ocSchool;
     }
 

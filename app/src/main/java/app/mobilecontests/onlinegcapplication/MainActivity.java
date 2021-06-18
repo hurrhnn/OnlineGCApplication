@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
-import app.mobilecontests.onlinegcapplication.ebsoc.OCLoginActivity;
+import app.mobilecontests.onlinegcapplication.dashboard.DashboardActivity;
 import app.mobilecontests.onlinegcapplication.sqlite.SQLiteHelper;
 
 public class MainActivity extends AppCompatActivity {

@@ -12,8 +12,6 @@ import android.widget.ImageView;
 
 public class SplashActivity extends Activity {
 
-    private static int SPLASH_DISPLAY_LENGTH = 1600;
-
     Animation splashAnim;
     ImageView school;
 
@@ -30,13 +28,11 @@ public class SplashActivity extends Activity {
         school = findViewById(R.id.school);
         school.setAnimation(splashAnim);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        final int SPLASH_DISPLAY_LENGTH = 1600;
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }, SPLASH_DISPLAY_LENGTH);
     }
 }

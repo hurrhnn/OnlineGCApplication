@@ -36,7 +36,6 @@ public class SelfCheckActivity extends AppCompatActivity {
         cookieManager.setAcceptCookie(true);
         String cookie = cookieManager.getCookie(url);
         System.out.println(cookie);
-
     }
 
 
@@ -57,6 +56,4 @@ public class SelfCheckActivity extends AppCompatActivity {
             return true;
         }
     }
-
-
 }

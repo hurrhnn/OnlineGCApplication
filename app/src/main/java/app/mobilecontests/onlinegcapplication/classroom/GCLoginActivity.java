@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import app.mobilecontests.onlinegcapplication.dashboard.DashboardActivity;
 import app.mobilecontests.onlinegcapplication.ebsoc.OCLoginActivity;
 import app.mobilecontests.onlinegcapplication.R;
 import app.mobilecontests.onlinegcapplication.sqlite.SQLiteHelper;
@@ -37,7 +38,6 @@ public class GCLoginActivity extends AppCompatActivity {
 
     SignInButton signIn;
     ImageButton backBtn;
-    Button loginBtn;
 
     SQLiteHelper sqLiteHelper;
     SQLiteDatabase database;
@@ -56,11 +56,6 @@ public class GCLoginActivity extends AppCompatActivity {
             if (v.getId() == R.id.google_signin_btn) {
                 signIn();
             }
-        });
-        loginBtn = findViewById(R.id.signin_btn);
-        loginBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(GCLoginActivity.this, OCLoginActivity.class);
-            startActivity(intent);
         });
 
         backBtn = findViewById(R.id.back_btn);
@@ -116,8 +111,8 @@ public class GCLoginActivity extends AppCompatActivity {
 
     public void course() { //classroom 가져오기
         ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Getting classroom list");
-        progressDialog.setMessage("Please wait..");
+        progressDialog.setTitle("구글 클래스룸을 가져오는 중입니다.");
+        progressDialog.setMessage("최대 1~2분까지 걸릴 수 있습니다.");
         progressDialog.show();
 
         gcServiceHelper.listCourses().addOnSuccessListener(courses -> {
@@ -179,7 +174,7 @@ public class GCLoginActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "An error occurred while loading the classroom.", Toast.LENGTH_LONG).show();
         }).addOnCompleteListener(task -> {
             progressDialog.dismiss();
-            Intent intent = new Intent(this, ResultActivity.class);
+            Intent intent = new Intent(this, DashboardActivity.class);
             startActivity(intent);
         });
     }

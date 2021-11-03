@@ -1,12 +1,9 @@
 package app.mobilecontests.onlinegcapplication.ebsoc;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -56,34 +53,10 @@ public class OCLoginActivity extends AppCompatActivity {
                 return;
             }
 
-            if (!hasNetworkConnection())
-                alertNetworkConnection();
-            else
-                ebsOCLogin(idTextField.getText().toString(), pwTextField.getText().toString(), false);
+            ebsOCLogin(idTextField.getText().toString(), pwTextField.getText().toString(), false);
         });
 
         findViewById(R.id.back_btn).setOnClickListener(v -> finish());
-    }
-
-    private void alertNetworkConnection() //네트워크 연결 오류 시 Toast
-    {
-        Toast.makeText(getApplicationContext(), "네트워크 연결 상태를 확인해주세요.", Toast.LENGTH_SHORT).show();
-    }
-
-    private boolean hasNetworkConnection() { //네트워크 연결 확인하는 코드
-        int[] networkTypes = {ConnectivityManager.TYPE_MOBILE, ConnectivityManager.TYPE_WIFI};
-        try {
-            ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            for (int networkType : networkTypes) {
-                NetworkInfo activeNetwork = manager.getActiveNetworkInfo();
-                if (activeNetwork != null && activeNetwork.getType() == networkType) {
-                    return true;
-                }
-            }
-        } catch (Exception e) {
-            return false;
-        }
-        return false;
     }
 
     private boolean isOCAccountSaved() {
@@ -104,7 +77,7 @@ public class OCLoginActivity extends AppCompatActivity {
                     try {
                         HTTPRequestUtils httpRequestUtils = new HTTPRequestUtils();
                         OCLearning ocLearning = new OCLearning(new JSONObject(httpRequestUtils.GET(String.format(OCInfo.LEARNING_API_URL.getValue(), ocMember.getOCSchool().getHostName()), ocMember.getLoginCookie(), (String[]) null).body()));
-                        System.out.println("Lecture num" + ocLearning.getLearningCount() + "\n");
+                        /* System.out.println("Lecture num" + ocLearning.getLearningCount() + "\n");
                         for (int i = 0; i < ocLearning.getLearningCount(); i++) {
                             System.out.println((i + 1) +
                                     ", class Name: " + ocLearning.getLearningClassNm(i) +
@@ -112,15 +85,15 @@ public class OCLoginActivity extends AppCompatActivity {
                                     ", class Name: " + ocLearning.getLearningLsnNm(i) +
                                     ", " + ocLearning.getLearningRtPgsRt(i) + "%");
                         }
-                        isLoginSuccessful[0] = true;
-                        System.out.println(ocMember);
+                        System.out.println(ocMember); */
 
+                        isLoginSuccessful[0] = true;
                         boolean isOCExist = false, isOCOverride = false;
                         byte[] existedAccountInfoBlob = null, existedLecturesBlob = null;
 
                         Gson gson = new Gson();
                         Cursor cursor = database.query("ebs_classroom", new String[]{"account_info", "lectures"}, null, null, null, null, null);
-                        if(cursor.moveToNext()) {
+                        if (cursor.moveToNext()) {
                             byte[] accountInfoBlob = cursor.getBlob(0);
                             byte[] lecturesBlob = cursor.getBlob(1);
 
@@ -167,12 +140,12 @@ public class OCLoginActivity extends AppCompatActivity {
         } catch (InterruptedException ignored) {
         }
         if (isLoginSuccessful[0]) {
-            if(!isOCAccountSaved()) {
+            if (!isOCAccountSaved()) {
                 SharedPreferenceManager.addString(getApplicationContext(), "ebsoc_id", id);
                 SharedPreferenceManager.addString(getApplicationContext(), "ebsoc_pw", pw);
             }
 
-            Toast.makeText(getApplicationContext(), isAutoLogin ? "EBSOC auto login successful!" : "EBSOC login successful!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), isAutoLogin ? "EBS 온라인 클래스 자동 로그인에 성공했습니다." : "EBS 온라인 클래스 로그인에 성공했습니다.", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(OCLoginActivity.this, GCLoginActivity.class);
             startActivity(intent);
         }

@@ -21,7 +21,7 @@
         <activity android:name=".schedule.ScheduleActivity" />
         <activity android:name=".classroom.GCLoginActivity"/>
         <activity android:name=".ebsoc.OCLoginActivity" />
-        <activity android:name=".classroom.ResultActivity" />
+        <activity android:name=".dashboard.DashboardActivity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/SplashTheme">

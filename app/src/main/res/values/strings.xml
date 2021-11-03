@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">classroom</string>
+    <string name="app_name">OGC</string>
     <string name="title_activity_oclogin">OcloginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>

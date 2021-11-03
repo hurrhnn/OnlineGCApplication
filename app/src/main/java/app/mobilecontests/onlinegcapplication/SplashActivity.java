@@ -21,7 +21,7 @@ public class SplashActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
 
-        // Animantions
+        // Animations
         splashAnim = AnimationUtils.loadAnimation(this, R.anim.splash_school_animation);
 
         // Hooks
